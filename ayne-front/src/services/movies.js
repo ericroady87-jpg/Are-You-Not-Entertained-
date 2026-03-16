@@ -13,15 +13,15 @@ const getAllMovies = async () => {
   }
 };
 
-const getMovieById = async (id) => {
+const getMovieById = async (omdbId) => {
   try {
-    const response = await fetch(`${BASE_URL}/${id}`);
+    const response = await fetch(`${BASE_URL}/omdb/${omdbId}`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch movie with id ${id}`);
+      throw new Error(`Failed to fetch movie with id ${omdbId}`);
     }
     return await response.json();
   } catch (error) {
-    console.error(`Error fetching movie with id ${id}:`, error);
+    console.error(`Error fetching movie with id ${omdbId}:`, error);
     throw error;
   }
 };

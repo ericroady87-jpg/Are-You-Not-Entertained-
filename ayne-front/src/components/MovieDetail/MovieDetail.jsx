@@ -45,7 +45,7 @@ const MovieDetail = () => {
       <h2>Genre: {movie.Genre}</h2>
       <h2>Rating: {movie.Rating}</h2>
       <h2>Tomato Meter: {movie.TomatoMeter}</h2>
-      <h2>Runtime: {movie.Runtime} minutes</h2>
+      <h2>Runtime: {movie.Runtime} </h2>
     </div>
   );
 };
