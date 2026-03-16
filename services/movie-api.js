@@ -14,4 +14,4 @@ const getMovieById = async (imdbId) => {
     return data;
 };
 
-export { searchMovies, getMovieById };
+module.exports = { searchMovies, getMovieById };

@@ -11,6 +11,8 @@ import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
 import MovieForm from './components/MovieForm/MovieForm.jsx';
 import EditMovie from './components/EditMovie/EditMovie.jsx';
 import { getAllMovies } from './services/movies.js';
+import MovieSearch from './pages/MovieSearch';
+import MovieDetails from './pages/MovieDetails';
 // import { UserProvider } from './context/UserContext.jsx';
 
 function App() {
@@ -49,6 +51,12 @@ function App() {
           <Route path='/movies/new' element={<MovieForm />} />
 
           <Route path='/movies/:id/edit' element={<EditMovie />} />
+
+          <Route path="/" element={<h1>Home</h1>} />
+
+          <Route path="/movies/search" element={<MovieSearch />} />
+
+          <Route path="/movies/:omdbId" element={<MovieDetails />} />
 
         </Routes>
     </div>

@@ -28,7 +28,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
