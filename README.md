@@ -4,11 +4,12 @@ A user generated movie database
 
 Link to the app:
 
-1. Back Story: Are you a fan of movies and tv shows? Because we are, and with this user generated list you can now track all of you favorite movis and tv shows you love, all in one place.
+1. Back Story: Are you a fan of movies and tv shows? Because we are!, and with this user generated list you can now track all of you favorite movis and tv shows you love, all in one place.
 
 2. Getting Started:
 
     A. Sign-Up:
+
         If you are a first time user click the "sign-up" link, then create a username and password.
 
     B. Sign-In:
@@ -50,6 +51,8 @@ Link to the app:
     9. Ejs
     10. Express-session
     11. Node-fetch
+    12. React 
+    13. Router
 
 5. Future Endevors:
 

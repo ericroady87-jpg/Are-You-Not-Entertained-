@@ -5,6 +5,6 @@ const EditMovie = () => {
       {/* Edit movie form content */}
     </div>
   )
-}
+} 
+export default EditMovie;
 
-export default EditMovie  
