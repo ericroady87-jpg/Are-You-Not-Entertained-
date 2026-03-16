@@ -4,12 +4,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const PORT = process.env.PORT || 5173
+const PORT = process.env.PORT || 4000;
 const methodOverride = require('method-override');
 const cors = require('cors');
 const testJwtRouter = require('./controllers/test-jwt');
 const session = require('express-session');
-
 
 
 //middleware 
