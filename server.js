@@ -4,11 +4,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const PORT = process.env.PORT || 5173
+const PORT = process.env.PORT || 4000
 const methodOverride = require('method-override');
 const cors = require('cors');
 const testJwtRouter = require('./controllers/test-jwt');
 const session = require('express-session');
+const authRouter = require('./controllers/auth.js');
 
 
 
@@ -29,28 +30,26 @@ mongoose.connection.on('connected', () => {
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // Routes go here
 
 const moviesRouter = require('./controllers/movie.js');
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.send('Backend is running');
 });
 
 app.use('/movies', moviesRouter)
 //app.use('/lists', listsRouter)
-//app.use('/auth', authRouter)
+app.use('/auth', authRouter)
 //app.use('/users', userRouter)
-//app.use('/test-jwt', testJwtRouter)
+app.use('/test-jwt', testJwtRouter)
 
-app.listen(5173, () => {
+app.listen(PORT, () => {
   console.log('The express app is ready!');
 });
-
-app.use('/test-jwt', testJwtRouter);

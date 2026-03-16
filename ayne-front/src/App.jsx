@@ -6,12 +6,12 @@ import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
 import SignInForm from './components/SignInForm/SignInForm.jsx';
 import Landing from './components/Landing/Landing.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
-import MoviesList from './components/MoviesList/MoviesList.jsx';
+import MovieList from './components/MovieList/MovieList.jsx';
 import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
 import MovieForm from './components/MovieForm/MovieForm.jsx';
 import EditMovie from './components/EditMovie/EditMovie.jsx';
 import { getAllMovies } from './services/movies.js';
-import { UserContext } from './context/UserContext.jsx';
+// import { UserProvider } from './context/UserContext.jsx';
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -32,7 +32,6 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext>
         <NavBar />
         <Routes>
           <Route path='/' element={<Landing />} />
@@ -42,7 +41,7 @@ function App() {
 
           <Route path='/dashboard' element={<Dashboard />} />
 
-          <Route path='/movies' element={<MoviesList movies={movies}
+          <Route path='/movies' element={<MovieList movies={movies}
              handleFormView={handleFormView} isFormOpen={isFormOpen} />} />
 
           <Route path='/movies/:id' element={<MovieDetail />} />
@@ -52,7 +51,6 @@ function App() {
           <Route path='/movies/:id/edit' element={<EditMovie />} />
 
         </Routes>
-      </UserContext>
     </div>
   )
 }

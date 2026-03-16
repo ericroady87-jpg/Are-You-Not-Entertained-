@@ -1,40 +1,50 @@
-const express = require('express')
-const router = express.Router()
-const movieApi = require('../Are-You-Not-Entertained-/services/movie-api.js');
+const express = require('express');
+const router = express.Router();
+const movieApi = require('../services/movie-api.js');
 const Movie = require('../models/movie.js');
 
-
-router.get('/new', (req, res) => {
-    res.render('movies/new', { movies: null, query: '' });
+// SEARCH OMDb
+router.get('/search/:query', async (req, res) => {
+  try {
+    const data = await movieApi.searchMovies(req.params.query);
+    res.json(data.Search || []);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.get('/search', async (req, res) => {
-  try {
-    const query = req.query.q;
-    if (!query) {
-      return res.render('movies/new', { movies: null, query: '' });
-    }
-
-    const data = await movieApi.searchMovies(query);
-
-    res.render('movies/new', {
-      movies: data.Search || [],
-      query,
-    });
-  } catch (err) {
-    console.log(err);
-    res.redirect('/');
-  }
-})
-
-router.get('/:omdbId', async (req, res) => {
+// GET one OMDb movie by OMDb id
+router.get('/omdb/:omdbId', async (req, res) => {
   try {
     const movie = await movieApi.getMovieById(req.params.omdbId);
-    res.render('movies/show', { movie });
+    res.json(movie);
   } catch (err) {
     console.log(err);
-    res.redirect('/movies/new');
+    res.status(500).json({ error: err.message });
   }
-})
+});
 
-module.exports = router 
+// GET all saved movies from MongoDB
+router.get('/', async (req, res) => {
+  try {
+    const movies = await Movie.find({});
+    res.json(movies);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET one saved movie from MongoDB by Mongo _id
+router.get('/:id', async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
+    res.json(movie);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+module.exports = router;
