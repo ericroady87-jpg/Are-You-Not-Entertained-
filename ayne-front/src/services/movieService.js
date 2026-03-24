@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000/movies';
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/movies`;
 
 const searchMovies = async (query) => {
   const res = await fetch(`${BASE_URL}/search/${query}`);
