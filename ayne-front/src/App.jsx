@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import './index.css'
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar.jsx';
 import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
